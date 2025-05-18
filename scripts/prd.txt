@@ -1,0 +1,156 @@
+<context>
+# Overview
+Cloose is an integration project that combines Clippy's nostalgic interface with Goose's powerful MCP (Model Context Protocol) client functionality. Instead of rebuilding Clippy to work with MCP, this project aims to maintain Goose's core functionality intact while using Clippy's interface elements, creating a familiar yet powerful user experience.
+
+# Core Features
+- Nostalgic Clippy interface with modern MCP capabilities
+- Complete preservation of Goose's MCP protocol handling and server connections
+- Lightweight adapter layer connecting Clippy's UI events to Goose's functionality
+- Minimal modifications to either codebase, focusing only on integration points
+- Extended settings UI to support MCP-specific configurations
+
+# User Experience
+- Users interact with the familiar Clippy character and animation system
+- Chat interface maintains the nostalgic design and interaction patterns
+- Backend processing uses Goose's powerful MCP capabilities
+- Configuration options available for both Clippy interface and Goose MCP connections
+</context>
+<PRD>
+# Technical Architecture
+
+## System Components
+1. Goose MCP Client (Core)
+   - Preserve all MCP protocol handling and server connections
+   - Maintain existing configuration and settings
+   - Keep backend code for MCP server communication intact
+
+2. Clippy Interface (UI Layer)
+   - Character animations and visual elements
+   - Chat interface components
+   - UI component structure
+   - Animation system
+
+3. Adapter Layer
+   - Connect Clippy's UI events (like chat messages) to Goose's MCP client
+   - Translate responses from Goose's MCP client into Clippy's UI format
+   - Handle formatting differences between the two systems
+   - Manage state synchronization between UI and backend
+
+4. Configuration Management
+   - Extended settings interface incorporating Goose MCP options
+   - Configuration persistence and loading
+
+## Data Models
+- Chat message format translation between Clippy and Goose
+- Animation state management for Clippy character
+- MCP server connection configuration
+- User preferences storage
+
+## APIs and Integrations
+- Replace Clippy's @electron/llm interactions with Goose MCP client calls
+- Expose Goose API methods to Clippy interface components
+- Map Clippy UI events to appropriate Goose client methods
+- Implement Electron IPC for main-renderer process communication
+
+## Infrastructure Requirements
+- Electron application foundation
+- TypeScript/JavaScript for UI components and adapter layer
+- MCP server connection handling via Goose
+- Cross-platform support (Windows, macOS, Linux)
+
+# Development Roadmap
+
+## Phase 1: Foundation and Analysis
+- Analyze both codebases in detail to identify integration points
+- Map Clippy's UI event system and understand how it interacts with LLM
+- Document Goose's API boundaries and MCP client functionality
+- Design the adapter layer architecture
+- Create development environment setup with both codebases
+
+## Phase 2: Core Adapter Implementation
+- Build basic adapter connecting Clippy UI events to Goose functionality
+- Replace Clippy's @electron/llm interactions with Goose MCP client calls
+- Implement message format translation between systems
+- Create initial state synchronization mechanism
+- Develop basic error handling for integration points
+
+## Phase 3: UI Integration
+- Connect Clippy character and animations to Goose responses
+- Implement chat interface connected to Goose backend
+- Adapt Clippy's animation triggers to work with Goose responses
+- Ensure smooth visual transitions when interacting with MCP
+
+## Phase 4: Configuration Management
+- Extend Clippy's settings UI to include Goose's MCP configurations
+- Implement configuration persistence
+- Create configuration validation
+- Develop user-friendly options for MCP server connections
+
+## Phase 5: Testing and Refinement
+- Test integration across various use cases
+- Optimize message handling and response times
+- Ensure smooth animations and transitions
+- Address edge cases in the adapter layer
+- Improve error handling and user feedback
+
+## Phase 6: Enhancements
+- Add additional Clippy animations specific to MCP interactions
+- Implement advanced configuration options
+- Create plugin system for extending functionality
+- Develop custom theming support
+- Add telemetry and usage analytics (optional)
+
+# Logical Dependency Chain
+1. Analysis of both systems must be completed first
+2. Basic adapter layer connecting the core systems
+3. Simple chat functionality via MCP before adding animations
+4. Basic Clippy animations before advanced interaction patterns
+5. Core configuration options before advanced settings
+6. Local development functionality before network features
+7. Error handling and fallbacks after main functionality works
+
+# Risks and Mitigations
+
+## Technical Challenges
+- Risk: Incompatible API patterns between Clippy and Goose
+  Mitigation: Design flexible adapter patterns that can normalize differences
+
+- Risk: Performance issues when adding adapter layer
+  Mitigation: Implement efficient message passing and minimize state duplication
+
+- Risk: Breaking changes in either codebase during development
+  Mitigation: Version-lock dependencies and clearly document integration points
+
+## Integration Complexity
+- Risk: Difficulty understanding Goose's API boundaries
+  Mitigation: Thorough documentation review and creating a comprehensive API map
+
+- Risk: Challenges in adapting Clippy's animations to MCP responses
+  Mitigation: Create a flexible animation mapping system with fallbacks
+
+- Risk: Configuration flow issues between components
+  Mitigation: Design a unified configuration system with clear validation
+
+## Resource Constraints
+- Risk: Complex integration requiring deep knowledge of both systems
+  Mitigation: Start with well-defined, smaller integration points and expand
+
+- Risk: Maintaining compatibility with future updates to either system
+  Mitigation: Design loosely coupled integration with clear boundaries
+
+# Appendix
+
+## Integration Points
+- Clippy UI event system to Goose MCP client
+- Message format translation layer
+- Animation triggering system
+- Configuration management
+- Error handling and fallbacks
+
+## Technical Specifications
+- Electron application structure
+- TypeScript/JavaScript integration patterns
+- MCP protocol handling
+- State management between UI and backend
+- Cross-component communication architecture
+</PRD>
